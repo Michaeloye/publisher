@@ -13,7 +13,7 @@ function NavElement({ iconNumber, text, active }) {
   return (
     <div
       className={
-        "lg:flex lg:justify-center lg:gap-3 ml-10 cursor-pointer " +
+        "lg:flex lg:justify-center lg:gap-3 lg:ml-10 cursor-pointer " +
         (active ? "text-primary-blue" : "text-gray-400")
       }
     >
