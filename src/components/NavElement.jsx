@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { IoMdBulb } from "react-icons/io";
 import { IoHome } from "react-icons/io5";
 import { MdExplore, MdInsertComment } from "react-icons/md";
@@ -18,7 +17,7 @@ function NavElement({ iconNumber, text, active }) {
       }
     >
       {iconList[iconNumber]}
-      <p className="text-lg font-semibold">{text}</p>
+      <p className="md:hidden lg:block lg:text-lg lg:font-semibold ">{text}</p>
     </div>
   );
 }
