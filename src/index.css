@@ -16,11 +16,11 @@ code {
     monospace;
 }
 
-#home {
+#comment-section {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
 }
-#home::-webkit-scrollbar {
+#comment-section::-webkit-scrollbar {
   /* WebKit */
   width: 0;
   height: 0;
