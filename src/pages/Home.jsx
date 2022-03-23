@@ -1,55 +1,29 @@
-import React from "react";
-import Comment from "../components/Comment/Comment";
+import { useState, useEffect } from "react";
+import BottomNav from "../components/BottomNav/BottomNav";
+import CommentSection from "../components/CommentSection/CommentSection";
+import OtherInfo from "../components/OtherInfo/OtherInfo";
+import SideNav from "../components/SideNav/SideNav";
+import useScreensize from "../hooks/useScreensize";
 
 function Home() {
+  const [smallScreen, setSmallScreen] = useState("");
+  const { width } = useScreensize();
+
+  useEffect(() => {
+    if (width >= 640) {
+      setSmallScreen(false);
+    } else {
+      setSmallScreen(true);
+    }
+    return () => {
+      null;
+    };
+  }, [width]);
   return (
-    <div
-      className="bg-primary-gray w-full h-screen overflow-y-scroll"
-      id="home"
-    >
-      {/* The above styling is what enalbes the center page to be scrollable. The scroll bar
-      is invisible thanks to the styling in index.css #home */}
-      <div>
-        <br />
-        <Comment
-          title="lorem ispium"
-          description="
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vero esse a eligendi, cum accusamus debitis consequatur fugit saepe veritatis atque? Exercitationem, esse tempora mollitia dignissimos minus illo omnis quidem?
-        "
-          author="andrew neil"
-        />
-        <Comment
-          title="lorem ispium"
-          description="
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vero esse a eligendi, cum accusamus debitis consequatur fugit saepe veritatis atque? Exercitationem, esse tempora mollitia dignissimos minus illo omnis quidem?
-      "
-          author="andrew neil"
-        />
-        <Comment
-          title="lorem ispium"
-          description="
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vero esse a eligendi, cum accusamus debitis consequatur fugit saepe veritatis atque? Exercitationem, esse tempora mollitia dignissimos minus illo omnis quidem?
-      "
-          author="andrew neil"
-        />
-        <Comment
-          title="lorem ispium"
-          description="
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vero esse a eligendi, cum accusamus debitis consequatur fugit saepe veritatis atque? Exercitationem, esse tempora mollitia dignissimos minus illo omnis quidem?
-      "
-          author="andrew neil"
-        />
-        <Comment
-          title="lorem ispium"
-          description="
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vero esse a eligendi, cum accusamus debitis consequatur fugit saepe veritatis atque? Exercitationem, esse tempora mollitia dignissimos minus illo omnis quidem?
-      "
-          author="andrew neil"
-        />
-        <br />
-        <br />
-        <br />
-      </div>
+    <div className="md:flex md:justify-around">
+      {smallScreen ? <BottomNav /> : <SideNav />}
+      <CommentSection />
+      {smallScreen ? "" : <OtherInfo />}
     </div>
   );
 }
