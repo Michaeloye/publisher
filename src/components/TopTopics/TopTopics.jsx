@@ -4,7 +4,7 @@ import BookImage from "../../assets/book.jpg";
 
 function TopTopics() {
   return (
-    <div className="bg-white md:w-3/4 rounded-2xl pb-5 shadow-lg">
+    <div className="bg-white md:w-11/12 lg:w-3/4 rounded-2xl pb-5 shadow-lg">
       <div
         className="md:h-14 rounded-tr-3xl rounded-tl-3xl opacity-80 shadow-lg"
         style={{
