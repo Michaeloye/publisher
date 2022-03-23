@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import useScreensize from "./hooks/useScreensize";
 import Home from "./pages/Home";
 import axios from "axios";
+import WelcomePage from "./pages/WelcomePage";
 
 function App() {
   const { width } = useScreensize();
@@ -27,6 +28,7 @@ function App() {
 
         <Header />
         <Routes>
+          <Route exact path="/" element={<WelcomePage />} />
           <Route exact path="/home" element={<Home />} />
         </Routes>
       </div>
