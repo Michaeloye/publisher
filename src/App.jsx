@@ -1,11 +1,12 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
-import OtherInfo from "./components/OtherInfo";
+import OtherInfo from "./components/OtherInfo/OtherInfo";
 import SideNav from "./components/SideNav/SideNav";
 import useScreensize from "./hooks/useScreensize";
 import Home from "./pages/Home";
 import BottomNav from "./components/BottomNav/BottomNav";
+import axios from "axios";
 
 function App() {
   const [smallScreen, setSmallScreen] = useState("");
@@ -17,6 +18,10 @@ function App() {
     } else {
       setSmallScreen(true);
     }
+    axios
+      .get("https://mikepostapp.herokuapp.com/feed/posts")
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err.message));
     return () => {
       null;
     };
@@ -30,7 +35,7 @@ function App() {
       <div className="md:flex md:justify-around">
         {smallScreen ? <BottomNav /> : <SideNav />}
         <Home />
-        <OtherInfo />
+        {smallScreen ? "" : <OtherInfo />}
       </div>
     </div>
   );
