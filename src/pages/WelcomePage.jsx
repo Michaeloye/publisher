@@ -26,7 +26,7 @@ function WelcomePage() {
       {/* Image and Top users */}
       <div className="flex flex-col items-center justify-center mt-5 text-left md:w-1/2">
         <StartTopic />
-        <div className="px-4 md:px-0 mt-3 ">
+        <div className="px-4 md:px-0 mt-3 md:ml-3 ">
           <h1 className="text-xl font-semibold">
             Dive into a network of Communities
           </h1>
