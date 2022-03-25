@@ -79,6 +79,20 @@ function WelcomePage() {
         "
           author="andrew neil"
         />
+        <Comment
+          title="lorem ispium"
+          description="
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vero esse a eligendi, cum accusamus debitis consequatur fugit saepe veritatis atque? Exercitationem, esse tempora mollitia dignissimos minus illo omnis quidem?
+        "
+          author="andrew neil"
+        />
+        <Comment
+          title="lorem ispium"
+          description="
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vero esse a eligendi, cum accusamus debitis consequatur fugit saepe veritatis atque? Exercitationem, esse tempora mollitia dignissimos minus illo omnis quidem?
+        "
+          author="andrew neil"
+        />
         <br />
         <br />
         {smallScreen && (
