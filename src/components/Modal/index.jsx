@@ -12,10 +12,8 @@ export default function Modal({ handleClose }) {
         <img
           src={close}
           onClick={() => handleClose(false)}
-          className="h-7 w-7 absolute cursor-pointer"
-          style={{ top: "5%", right: "10%" }}
+          className="h-7 w-7 absolute cursor-pointer -top-8 right-0 md:-right-7"
         />
-        {/* <img src={image} alt="image-of-product" className="w-auto" style={{ maxHeight: '90vh' }} /> */}
       </div>
     </Backdrop>
   );
