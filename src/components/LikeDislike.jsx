@@ -7,10 +7,11 @@ function LikeDislike({ number }) {
   const [dislike, setDislike] = useState(true);
   const [vote, setVote] = useState(number);
   return (
-    <div className="flex flex-col items-center gap-1 cursor-pointer">
+    <div className="flex flex-col items-center gap-1">
       <FaArrowUp
         color={like ? "gray" : "#1a62dc"}
         size={20}
+        cursor="pointer"
         onClick={() => {
           setLike(false);
           setDislike(true);
@@ -22,6 +23,7 @@ function LikeDislike({ number }) {
       <FaArrowDown
         color={dislike ? "gray" : "red"}
         size={20}
+        cursor="pointer"
         onClick={() => {
           setDislike(false);
           setLike(true);
