@@ -5,10 +5,10 @@ function LoginOrSignup({ text }) {
     // Depending on the text the button color is determined
     <div
       className={
-        `py-2 px-10 rounded-full font-medium ` +
+        `py-2 px-10 rounded-full font-medium cursor-pointer ` +
         (text === "Login"
-          ? `bg-transparent border border-primary-blue`
-          : `bg-primary-blue border text-white`)
+          ? `bg-transparent border border-primary-blue `
+          : `bg-primary-blue border text-white `)
       }
     >
       {text}
