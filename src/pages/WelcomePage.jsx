@@ -82,7 +82,7 @@ function WelcomePage() {
         <br />
         <br />
         {smallScreen && (
-          <div className="w-3/4 mt-10">
+          <div className="w-3/4 mt-10 mx-auto">
             <Footer />
           </div>
         )}
