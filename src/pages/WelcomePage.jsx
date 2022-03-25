@@ -1,12 +1,29 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import LoginOrSignup from "../components/LoginOrSignup";
 import StartTopic from "../components/StartTopic";
 import talk from "../assets/talk.png";
 import Comment from "../components/Comment/Comment";
+import TopUsers from "../components/TopUsers/TopUsers";
+import Footer from "../components/Footer/Footer";
+import useScreensize from "../hooks/useScreensize";
 
 function WelcomePage() {
+  const [smallScreen, setSmallScreen] = useState("");
+  const { width } = useScreensize();
+
+  useEffect(() => {
+    if (width >= 640) {
+      setSmallScreen(false);
+    } else {
+      setSmallScreen(true);
+    }
+    return () => {
+      null;
+    };
+  }, [width]);
   return (
     <main className="flex flex-col md:flex-row h-screen justify-start items-start overflow-y-scroll">
+      {/* Image and Top users */}
       <div className="flex flex-col items-center justify-center mt-5 text-left md:w-1/2">
         <StartTopic />
         <div className="px-4 md:px-0 mt-3 ">
@@ -23,8 +40,21 @@ function WelcomePage() {
           <LoginOrSignup text={"Sign Up"} />
         </div>
         <img src={talk} alt="two people talking" className="scale-75 " />
+        <TopUsers />
+
+        {/* If on small screen this footer won't be displayed */}
+        {!smallScreen && (
+          <div className="w-3/4 mt-16 lg:ml-24">
+            <Footer />
+          </div>
+        )}
+        <br />
+        <br />
+        <br />
       </div>
-      <div className="mt-10 md:w-3/4">
+
+      {/* Comments */}
+      <div className="md:mt-10 md:w-3/4 items-center justify-center">
         <p className="text-left font-semibold ml-10 md:ml-20 mb-4">
           Popular posts
         </p>
@@ -49,6 +79,14 @@ function WelcomePage() {
         "
           author="andrew neil"
         />
+        <br />
+        <br />
+        {smallScreen && (
+          <div className="w-3/4 mt-10">
+            <Footer />
+          </div>
+        )}
+        <br />
       </div>
     </main>
   );
