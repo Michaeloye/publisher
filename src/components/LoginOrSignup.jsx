@@ -1,6 +1,6 @@
 import React from "react";
 
-function LoginOrSignup({ text }) {
+function LoginOrSignup({ text, onClick }) {
   return (
     // Depending on the text the button color is determined
     <div
@@ -10,6 +10,7 @@ function LoginOrSignup({ text }) {
           ? `bg-transparent border border-primary-blue `
           : `bg-primary-blue border text-white `)
       }
+      onClick={() => onClick()}
     >
       {text}
     </div>
