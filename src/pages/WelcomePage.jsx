@@ -5,11 +5,17 @@ import talk from "../assets/talk.png";
 import Comment from "../components/Comment/Comment";
 import TopUsers from "../components/TopUsers/TopUsers";
 import Footer from "../components/Footer/Footer";
+import Modal from "../components/Modal/index";
 import useScreensize from "../hooks/useScreensize";
 
 function WelcomePage() {
   const [smallScreen, setSmallScreen] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
   const { width } = useScreensize();
+
+  const handleModal = (state) => {
+    setModalOpen(state);
+  };
 
   useEffect(() => {
     if (width >= 640) {
@@ -23,6 +29,8 @@ function WelcomePage() {
   }, [width]);
   return (
     <main className="flex flex-col md:flex-row h-screen justify-start items-start overflow-y-scroll">
+      {modalOpen && <Modal handleClose={handleModal} />}
+
       {/* Image and Top users */}
       <div className="flex flex-col items-center justify-center mt-5 text-left md:w-1/2">
         <StartTopic />
@@ -36,7 +44,8 @@ function WelcomePage() {
           </p>
         </div>
         <div className="flex gap-3 mt-5">
-          <LoginOrSignup text={"Login"} />
+          <LoginOrSignup text={"Login"} onClick={() => handleModal(true)} />
+
           <LoginOrSignup text={"Sign Up"} />
         </div>
         <img src={talk} alt="two people talking" className="scale-75 " />
