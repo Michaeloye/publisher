@@ -107,6 +107,9 @@ function WelcomePage() {
         {smallScreen && (
           <div className="w-3/4 mt-10 mx-auto">
             <Footer />
+            <br />
+            <br />
+            <br />
           </div>
         )}
         <br />
