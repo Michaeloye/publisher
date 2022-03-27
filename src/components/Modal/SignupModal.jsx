@@ -3,7 +3,7 @@ import Backdrop from "../Backdrop";
 import close from "../../assets/close.svg";
 import LoginOrSignup from "../LoginOrSignup";
 import { FcGoogle } from "react-icons/fc";
-import { GrFacebookOption, GrMail } from "react-icons/gr";
+import { GrFacebookOption } from "react-icons/gr";
 import { DiApple } from "react-icons/di";
 import Input from "../Input";
 
