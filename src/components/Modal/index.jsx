@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import Backdrop from "../Backdrop";
 import close from "../../assets/close.svg";
 import LoginOrSignup from "../LoginOrSignup";
@@ -10,6 +10,29 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import Input from "../Input";
 
 export default function Modal({ handleClose }) {
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [onTypePassword, setOnTypePassword] = useState(false);
+
+  // checking if the input is empty is important because the user might delete the entire password
+  // but the match still says 'passwords match' or "passwords don't match" so when the input is
+  // empty no check is raised
+  function changePassword(e) {
+    setPassword(e.target.value);
+    if (e.target.value === "") {
+      setOnTypePassword(false);
+    } else {
+      setOnTypePassword(true);
+    }
+  }
+  function changeConfirmPassword(e) {
+    setConfirmPassword(e.target.value);
+    if (e.target.value === "") {
+      setOnTypePassword(false);
+    } else {
+      setOnTypePassword(true);
+    }
+  }
   return (
     <Backdrop>
       <div
@@ -33,13 +56,34 @@ export default function Modal({ handleClose }) {
             type="password"
             name="password"
             placeHolder="password"
+            changePassword={changePassword}
           />
           <Input
             icon={3}
             type="password"
             name="password"
             placeHolder="confirm password"
+            changePassword={changeConfirmPassword}
           />
+
+          {/* onTypePassword is necessary because the password values are not meant 
+          to be checked if the user hasn't started typing, so once the user starts typing
+          onTypePassword is true so the two passwords(password and confirmPassword) can
+          be checked if they match */}
+
+          {onTypePassword ? (
+            password === confirmPassword ? (
+              <p className="italic text-xs -mt-3 text-green-600 ">
+                passwords match
+              </p>
+            ) : (
+              <p className="italic text-xs -mt-3 text-red-500 ">
+                passwords don't match
+              </p>
+            )
+          ) : (
+            ""
+          )}
           <LoginOrSignup text={"Sign Up"} />
         </form>
         <p>or</p>
