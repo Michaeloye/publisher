@@ -16,7 +16,7 @@ function Input({ icon, type, name, placeHolder, changePassword }) {
         placeholder={placeHolder}
         autoComplete="off"
         spellCheck="false"
-        className="h-10 md:h-9 px-9 py-1 rounded-full bg-white text-sm focus:outline-none lg:text-base border shadow-sm text-gray-700"
+        className="h-10 md:h-9 px-9 py-1 rounded-full bg-white text-sm focus:outline-none lg:text-base border border-gray-600 shadow-sm text-gray-700"
         onChange={changePassword}
       />
       {Icons[icon]}
