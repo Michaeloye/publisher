@@ -3,8 +3,11 @@ import Backdrop from "../Backdrop";
 import close from "../../assets/close.svg";
 import LoginOrSignup from "../LoginOrSignup";
 import { FcGoogle } from "react-icons/fc";
-import { GrFacebookOption } from "react-icons/gr";
+import { GrFacebookOption, GrMail } from "react-icons/gr";
 import { DiApple } from "react-icons/di";
+import { FaUser } from "react-icons/fa";
+import { RiLockPasswordFill } from "react-icons/ri";
+
 export default function Modal({ handleClose }) {
   return (
     <Backdrop>
@@ -22,38 +25,59 @@ export default function Modal({ handleClose }) {
           Create an account in just few clicks
         </p>
         <form className="flex flex-col items-center w-3/4 gap-3 md:gap-4">
-          <input
-            type="text"
-            name="topic"
-            placeholder="topic"
-            autoComplete="off"
-            spellCheck="false"
-            className=" h-10 md:h-9 px-9 py-1 rounded-full bg-white text-sm focus:outline-none lg:text-base border shadow-sm"
-          />
-          <input
-            type="text"
-            name="topic"
-            placeholder="topic"
-            autoComplete="off"
-            spellCheck="false"
-            className=" h-10 md:h-9 px-9 py-1 rounded-full bg-white text-sm focus:outline-none lg:text-base border shadow-sm"
-          />
-          <input
-            type="text"
-            name="topic"
-            placeholder="topic"
-            autoComplete="off"
-            spellCheck="false"
-            className=" h-10 md:h-9 px-9 py-1 rounded-full bg-white text-sm focus:outline-none lg:text-base border shadow-sm"
-          />
-          <input
-            type="text"
-            name="topic"
-            placeholder="topic"
-            autoComplete="off"
-            spellCheck="false"
-            className=" h-10 md:h-9 px-9 py-1 rounded-full bg-white text-sm focus:outline-none lg:text-base border shadow-sm"
-          />
+          <div className="relative">
+            <input
+              type="text"
+              name="fullname"
+              placeholder="fullname"
+              autoComplete="off"
+              spellCheck="false"
+              className="h-10 md:h-9 px-9 py-1 rounded-full bg-white text-sm focus:outline-none lg:text-base border shadow-sm text-gray-700"
+            />
+            <FaUser className="absolute top-3 text-gray-300 left-3 " />
+          </div>
+          <div className="relative">
+            <input
+              type="text"
+              name="topic"
+              placeholder="topic"
+              autoComplete="off"
+              spellCheck="false"
+              className="h-10 md:h-9 px-9 py-1 rounded-full bg-white text-sm focus:outline-none lg:text-base border shadow-sm text-gray-700"
+            />
+            <GrMail
+              size={18}
+              className="absolute top-2 text-gray-300 left-3 "
+            />
+          </div>
+          <div className="relative">
+            <input
+              type="password"
+              name="password"
+              placeholder="password"
+              autoComplete="off"
+              spellCheck="false"
+              className="h-10 md:h-9 px-9 py-1 rounded-full bg-white text-sm focus:outline-none lg:text-base border shadow-sm text-gray-700"
+            />
+            <RiLockPasswordFill
+              size={18}
+              className="absolute top-2 text-gray-300 left-3 "
+            />
+          </div>
+          <div className="relative">
+            <input
+              type="password"
+              name="confirm-password"
+              placeholder="confirm password"
+              autoComplete="off"
+              spellCheck="false"
+              className="h-10 md:h-9 px-9 py-1 rounded-full bg-white text-sm focus:outline-none lg:text-base border shadow-sm text-gray-700"
+            />
+            <RiLockPasswordFill
+              size={18}
+              className="absolute top-2 text-gray-300 left-3 "
+            />
+          </div>
           {/* <input
             type="text"
             name="topic"
