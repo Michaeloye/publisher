@@ -7,6 +7,7 @@ import { GrFacebookOption, GrMail } from "react-icons/gr";
 import { DiApple } from "react-icons/di";
 import { FaUser } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
+import Input from "../Input";
 
 export default function Modal({ handleClose }) {
   return (
@@ -25,101 +26,20 @@ export default function Modal({ handleClose }) {
           Create an account in just few clicks
         </p>
         <form className="flex flex-col items-center w-3/4 gap-3 md:gap-4">
-          <div className="relative">
-            <input
-              type="text"
-              name="fullname"
-              placeholder="fullname"
-              autoComplete="off"
-              spellCheck="false"
-              className="h-10 md:h-9 px-9 py-1 rounded-full bg-white text-sm focus:outline-none lg:text-base border shadow-sm text-gray-700"
-            />
-            <FaUser className="absolute top-3 text-gray-300 left-3 " />
-          </div>
-          <div className="relative">
-            <input
-              type="text"
-              name="topic"
-              placeholder="topic"
-              autoComplete="off"
-              spellCheck="false"
-              className="h-10 md:h-9 px-9 py-1 rounded-full bg-white text-sm focus:outline-none lg:text-base border shadow-sm text-gray-700"
-            />
-            <GrMail
-              size={18}
-              className="absolute top-2 text-gray-300 left-3 "
-            />
-          </div>
-          <div className="relative">
-            <input
-              type="password"
-              name="password"
-              placeholder="password"
-              autoComplete="off"
-              spellCheck="false"
-              className="h-10 md:h-9 px-9 py-1 rounded-full bg-white text-sm focus:outline-none lg:text-base border shadow-sm text-gray-700"
-            />
-            <RiLockPasswordFill
-              size={18}
-              className="absolute top-2 text-gray-300 left-3 "
-            />
-          </div>
-          <div className="relative">
-            <input
-              type="password"
-              name="confirm-password"
-              placeholder="confirm password"
-              autoComplete="off"
-              spellCheck="false"
-              className="h-10 md:h-9 px-9 py-1 rounded-full bg-white text-sm focus:outline-none lg:text-base border shadow-sm text-gray-700"
-            />
-            <RiLockPasswordFill
-              size={18}
-              className="absolute top-2 text-gray-300 left-3 "
-            />
-          </div>
-          {/* <input
-            type="text"
-            name="topic"
-            placeholder="topic"
-            autoComplete="off"
-            spellCheck="false"
-            className="h-8 md:h-9 px-9 py-1 rounded-full bg-white text-sm focus:outline-none lg:text-base inner shadow-inner"
-            style={{
-              "--tw-shadow": "inset 0 2px 4px 0 rgb(0 0 0 / 0.35)",
-              "--tw-shadow-colored": "inset 0 2px 4px 0 var(--tw-shadow-color)",
-              boxShadow:
-                "var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)",
-            }}
-          /> */}
-          {/* <input
-            type="text"
-            name="topic"
-            placeholder="topic"
-            autoComplete="off"
-            spellCheck="false"
-            className="h-8 md:h-9 px-9 py-1 rounded-full bg-white text-sm focus:outline-none lg:text-base inner shadow-inner"
-            style={{
-              "--tw-shadow": "inset 0 2px 4px 0 rgb(0 0 0 / 0.35)",
-              "--tw-shadow-colored": "inset 0 2px 4px 0 var(--tw-shadow-color)",
-              boxShadow:
-                "var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)",
-            }}
-          /> */}
-          {/* <input
-            type="text"
-            name="topic"
-            placeholder="topic"
-            autoComplete="off"
-            spellCheck="false"
-            className="h-8 md:h-9 px-9 py-1 rounded-full bg-white text-sm focus:outline-none lg:text-base inner shadow-inner"
-            style={{
-              "--tw-shadow": "inset 0 2px 4px 0 rgb(0 0 0 / 0.35)",
-              "--tw-shadow-colored": "inset 0 2px 4px 0 var(--tw-shadow-color)",
-              boxShadow:
-                "var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)",
-            }}
-          /> */}
+          <Input icon={1} type="text" name="fullname" placeHolder="fullname" />
+          <Input icon={2} type="email" name="email" placeHolder="Email" />
+          <Input
+            icon={3}
+            type="password"
+            name="password"
+            placeHolder="password"
+          />
+          <Input
+            icon={3}
+            type="password"
+            name="password"
+            placeHolder="confirm password"
+          />
           <LoginOrSignup text={"Sign Up"} />
         </form>
         <p>or</p>
