@@ -59,7 +59,7 @@ export default function Modal({ handleClose }) {
           <Input
             icon={3}
             type="password"
-            name="password"
+            name="confirm-password"
             placeHolder="confirm password"
             changePassword={changeConfirmPassword}
           />
