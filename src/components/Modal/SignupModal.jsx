@@ -7,7 +7,7 @@ import { GrFacebookOption, GrMail } from "react-icons/gr";
 import { DiApple } from "react-icons/di";
 import Input from "../Input";
 
-export default function Modal({ handleClose }) {
+export default function SignupModal({ handleClose }) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [onTypePassword, setOnTypePassword] = useState(false);
