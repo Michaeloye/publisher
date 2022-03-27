@@ -5,18 +5,23 @@ import talk from "../assets/talk.png";
 import Comment from "../components/Comment/Comment";
 import TopUsers from "../components/TopUsers/TopUsers";
 import Footer from "../components/Footer/Footer";
-import Modal from "../components/Modal/index";
+import SignupModal from "../components/Modal/SignupModal";
+import LoginModal from "../components/Modal/LoginModal";
 import useScreensize from "../hooks/useScreensize";
 
 function WelcomePage() {
   const [smallScreen, setSmallScreen] = useState("");
-  const [modalOpen, setModalOpen] = useState(false);
+  const [signupModalOpen, setSignupModalOpen] = useState(false);
+  const [loginModalOpen, setLoginModalOpen] = useState(false);
+
   const { width } = useScreensize();
 
-  const handleModal = (state) => {
-    setModalOpen(state);
+  const handleSignupModal = (state) => {
+    setSignupModalOpen(state);
   };
-
+  const handleLoginModal = (state) => {
+    setLoginModalOpen(state);
+  };
   useEffect(() => {
     if (width >= 640) {
       setSmallScreen(false);
@@ -29,7 +34,9 @@ function WelcomePage() {
   }, [width]);
   return (
     <main className="flex flex-col md:flex-row h-screen justify-start items-start overflow-y-scroll">
-      {modalOpen && <Modal handleClose={handleModal} />}
+      {/* Modal */}
+      {signupModalOpen && <SignupModal handleClose={handleSignupModal} />}
+      {loginModalOpen && <LoginModal handleClose={handleLoginModal} />}
 
       {/* Image and Top users */}
       <div className="flex flex-col items-center justify-center mt-5 text-left md:w-1/2">
@@ -44,9 +51,15 @@ function WelcomePage() {
           </p>
         </div>
         <div className="flex gap-3 mt-5">
-          <LoginOrSignup text={"Login"} onClick={() => handleModal(true)} />
+          <LoginOrSignup
+            text={"Login"}
+            onClick={() => handleLoginModal(true)}
+          />
 
-          <LoginOrSignup text={"Sign Up"} />
+          <LoginOrSignup
+            text={"Sign Up"}
+            onClick={() => handleSignupModal(true)}
+          />
         </div>
         <img src={talk} alt="two people talking" className="scale-75 " />
         <TopUsers />
