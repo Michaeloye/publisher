@@ -5,8 +5,6 @@ import LoginOrSignup from "../LoginOrSignup";
 import { FcGoogle } from "react-icons/fc";
 import { GrFacebookOption, GrMail } from "react-icons/gr";
 import { DiApple } from "react-icons/di";
-import { FaUser } from "react-icons/fa";
-import { RiLockPasswordFill } from "react-icons/ri";
 import Input from "../Input";
 
 export default function Modal({ handleClose }) {
