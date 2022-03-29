@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import BottomNav from "../components/BottomNav/BottomNav";
-import ProfileSection from "../components/ProfileSection/ProfileSection";
 import OtherInfo from "../components/OtherInfo/OtherInfo";
+import ProfileSection from "../components/ProfileSection/ProfileSection";
 import SideNav from "../components/SideNav/SideNav";
 import useScreensize from "../hooks/useScreensize";
 
