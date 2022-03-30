@@ -6,8 +6,10 @@ import { FcGoogle } from "react-icons/fc";
 import { GrFacebookOption } from "react-icons/gr";
 import { DiApple } from "react-icons/di";
 import Input from "../Input";
+import axios from "axios";
 
 export default function LoginModal({ handleClose }) {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   // checking if the input is empty is important because the user might delete the entire password
@@ -16,10 +18,23 @@ export default function LoginModal({ handleClose }) {
   function changePassword(e) {
     setPassword(e.target.value);
   }
+  function loginUser() {
+    axios
+      .post("https://mikepostapp.herokuapp.com/auth/login", {
+        email: email,
+        password: password,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
   return (
     <Backdrop>
       <div
-        className="relative mx-auto h-11/12 w-11/12 md:w-1/3 bg-white flex flex-col items-center justify-center rounded-2xl gap-2 md:gap-3 py-7"
+        className="relative mx-auto h-11/12 w-11/12 md:w-1/2 lg:w-1/3 bg-white flex flex-col items-center justify-center rounded-2xl gap-2 md:gap-3 py-7"
         onClick={(e) => e.stopPropagation()}
       >
         <img
@@ -30,15 +45,21 @@ export default function LoginModal({ handleClose }) {
         <h1 className="md:text-xl font-semibold">Login</h1>
 
         <form className="flex flex-col items-center w-3/4 gap-3 md:gap-4">
-          <Input icon={2} type="email" name="email" placeHolder="Email" />
+          <Input
+            icon={2}
+            type="email"
+            name="email"
+            placeHolder="Email"
+            changeInput={(e) => setEmail(e.target.value)}
+          />
           <Input
             icon={3}
             type="password"
             name="password"
             placeHolder="password"
-            changePassword={changePassword}
+            changeInput={changePassword}
           />
-          <LoginOrSignup text={"Login"} />
+          <LoginOrSignup text={"Login"} onClick={() => loginUser()} />
         </form>
         <p>or</p>
         <div className="border-2 h-10 w-64 flex items-center justify-center gap-3 rounded-full cursor-pointer">
