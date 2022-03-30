@@ -6,8 +6,11 @@ import { FcGoogle } from "react-icons/fc";
 import { GrFacebookOption } from "react-icons/gr";
 import { DiApple } from "react-icons/di";
 import Input from "../Input";
+import axios from "axios";
 
 export default function SignupModal({ handleClose }) {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [onTypePassword, setOnTypePassword] = useState(false);
@@ -31,6 +34,22 @@ export default function SignupModal({ handleClose }) {
       setOnTypePassword(true);
     }
   }
+
+  function createAccount() {
+    axios
+      .post("https://mikepostapp.herokuapp.com/auth/signup", {
+        name: username,
+        email: email,
+        password: password,
+        passwordConfirm: confirmPassword,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
   return (
     <Backdrop>
       <div
@@ -47,21 +66,35 @@ export default function SignupModal({ handleClose }) {
           Create an account in just few clicks
         </p>
         <form className="flex flex-col items-center w-3/4 gap-3 md:gap-4">
-          <Input icon={1} type="text" name="fullname" placeHolder="fullname" />
-          <Input icon={2} type="email" name="email" placeHolder="Email" />
+          <Input
+            icon={1}
+            type="text"
+            name="fullname"
+            placeHolder="fullname"
+            changeInput={(e) => {
+              setUsername(e.target.value);
+            }}
+          />
+          <Input
+            icon={2}
+            type="email"
+            name="email"
+            placeHolder="Email"
+            changeInput={(e) => setEmail(e.target.value)}
+          />
           <Input
             icon={3}
             type="password"
             name="password"
             placeHolder="password"
-            changePassword={changePassword}
+            changeInput={changePassword}
           />
           <Input
             icon={3}
             type="password"
             name="confirm-password"
             placeHolder="confirm password"
-            changePassword={changeConfirmPassword}
+            changeInput={changeConfirmPassword}
           />
 
           {/* onTypePassword is necessary because the password values are not meant 
@@ -82,7 +115,7 @@ export default function SignupModal({ handleClose }) {
           ) : (
             ""
           )}
-          <LoginOrSignup text={"Sign Up"} />
+          <LoginOrSignup text={"Sign Up"} onClick={() => createAccount()} />
         </form>
         <p>or</p>
         <div className="border-2 h-10 w-64 flex items-center justify-center gap-3 rounded-full cursor-pointer">
