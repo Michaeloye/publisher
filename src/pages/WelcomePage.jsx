@@ -18,9 +18,11 @@ function WelcomePage() {
 
   const handleSignupModal = (state) => {
     setSignupModalOpen(state);
+    setLoginModalOpen(false);
   };
   const handleLoginModal = (state) => {
     setLoginModalOpen(state);
+    setSignupModalOpen(false);
   };
   useEffect(() => {
     if (width >= 640) {
