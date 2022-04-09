@@ -22,7 +22,6 @@ export default function SignupModal({ handleClose }) {
 
   // check for when an account is created
   const [errorOccured, setErrorOccured] = useState(false);
-  const [accountCreatedModalOpen, setAccountCreatedModalOpen] = useState(true);
 
   // checking if the input is empty is important because the user might delete the entire password
   // but the match still says 'passwords match' or "passwords don't match" so when the input is
@@ -43,6 +42,9 @@ export default function SignupModal({ handleClose }) {
       setOnTypePassword(true);
     }
   }
+  function handleErrorOccuredModal(state) {
+    setEmailExist(state);
+  }
   // account created handler
 
   function createAccount() {
@@ -61,6 +63,7 @@ export default function SignupModal({ handleClose }) {
       })
       .catch((error) => {
         if (error.message === "Request failed with status code 400") {
+          console.log(error);
           setLoading(false);
           setEmailExist(true);
         } else {
@@ -71,7 +74,7 @@ export default function SignupModal({ handleClose }) {
   // if loading disply Loader
 
   if (errorOccured) {
-    return <ErrorOccuredModal />;
+    return <ErrorOccuredModal handleClose={handleErrorOccuredModal()} />;
   } else {
     return (
       <Backdrop>
