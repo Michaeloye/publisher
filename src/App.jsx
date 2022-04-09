@@ -19,7 +19,7 @@ function App() {
   //   return () => {
   //     null;
   //   };
-  // }, [width]);
+  // }, []);
   return (
     <BrowserRouter>
       <div className="App bg-primary-gray h-screen overflow-y-hidden">
@@ -30,7 +30,7 @@ function App() {
         <Header />
         <Routes>
           <Route exact path="/" element={<WelcomePage />} />
-          <Route exact path="/home" element={<Home />} />
+          <Route exact path="/feed" element={<Home />} />
           <Route exact path="/profile" element={<Profile />} />
         </Routes>
       </div>
