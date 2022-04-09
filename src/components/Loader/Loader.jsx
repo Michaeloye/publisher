@@ -7,8 +7,8 @@ function Loader() {
     <Backdrop>
       <Oval
         ariaLabel="loading-indicator"
-        height={100}
-        width={100}
+        height={50}
+        width={50}
         strokeWidth={3}
         color="#1a62dc"
         secondaryColor="#eeeeee"
