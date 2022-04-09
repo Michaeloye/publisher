@@ -7,7 +7,7 @@ import { GrFacebookOption } from "react-icons/gr";
 import { DiApple } from "react-icons/di";
 import Input from "../Input";
 import axios from "axios";
-import AccountCreatedModal from "./AccountCreatedModal";
+import ErrorOccuredModal from "./ErrorOccuredModal";
 import Loader from "../Loader/Loader";
 
 export default function SignupModal({ handleClose }) {
@@ -16,10 +16,12 @@ export default function SignupModal({ handleClose }) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [onTypePassword, setOnTypePassword] = useState(false);
+
+  const [emailExist, setEmailExist] = useState(false);
   const [loading, setLoading] = useState(false);
 
   // check for when an account is created
-  const [accountCreated, setAccountCreated] = useState(false);
+  const [errorOccured, setErrorOccured] = useState(false);
   const [accountCreatedModalOpen, setAccountCreatedModalOpen] = useState(true);
 
   // checking if the input is empty is important because the user might delete the entire password
@@ -42,9 +44,6 @@ export default function SignupModal({ handleClose }) {
     }
   }
   // account created handler
-  const handleAccountCreatedModalOpen = (state) => {
-    setAccountCreatedModalOpen(state);
-  };
 
   function createAccount() {
     setLoading(true);
@@ -58,21 +57,21 @@ export default function SignupModal({ handleClose }) {
       .then((response) => {
         console.log(response);
         setLoading(false);
-        setAccountCreated(true);
+        window.location.href = `feed`;
       })
       .catch((error) => {
-        console.log(error);
+        if (error.message === "Request failed with status code 400") {
+          setLoading(false);
+          setEmailExist(true);
+        } else {
+          setErrorOccured(true);
+        }
       });
   }
-  // if an account was created successfully then disply AccountCreatedModal
-  if (accountCreated) {
-    return (
-      accountCreatedModalOpen && (
-        <AccountCreatedModal handleClose={handleAccountCreatedModalOpen} />
-      )
-    );
-  } else if (loading) {
-    return loading && <Loader />;
+  // if loading disply Loader
+
+  if (errorOccured) {
+    return <ErrorOccuredModal />;
   } else {
     return (
       <Backdrop>
@@ -99,16 +98,21 @@ export default function SignupModal({ handleClose }) {
                 setUsername(e.target.value);
               }}
             />
-            <p className="italic text-xs -mt-3 text-red-500 ">
-              Email already exist
-            </p>
             <Input
               icon={2}
               type="email"
               name="email"
               placeHolder="Email"
-              changeInput={(e) => setEmail(e.target.value)}
+              changeInput={(e) => {
+                setEmail(e.target.value);
+                setEmailExist(false);
+              }}
             />
+            {emailExist && (
+              <p className="italic text-xs -mt-1 text-red-500 -mb-2 ">
+                Email already exist
+              </p>
+            )}
             <Input
               icon={3}
               type="password"
@@ -142,7 +146,11 @@ export default function SignupModal({ handleClose }) {
             ) : (
               ""
             )}
-            <LoginOrSignup text={"Sign Up"} onClick={() => createAccount()} />
+            {loading ? (
+              <Loader />
+            ) : (
+              <LoginOrSignup text={"Sign Up"} onClick={() => createAccount()} />
+            )}
           </form>
           <p>or</p>
           <div className="border-2 h-10 w-64 flex items-center justify-center gap-3 rounded-full cursor-pointer">
