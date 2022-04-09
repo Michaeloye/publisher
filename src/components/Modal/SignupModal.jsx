@@ -8,6 +8,7 @@ import { DiApple } from "react-icons/di";
 import Input from "../Input";
 import axios from "axios";
 import AccountCreatedModal from "./AccountCreatedModal";
+import Loader from "../Loader/Loader";
 
 export default function SignupModal({ handleClose }) {
   const [username, setUsername] = useState("");
@@ -15,6 +16,7 @@ export default function SignupModal({ handleClose }) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [onTypePassword, setOnTypePassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   // check for when an account is created
   const [accountCreated, setAccountCreated] = useState(false);
@@ -45,6 +47,7 @@ export default function SignupModal({ handleClose }) {
   };
 
   function createAccount() {
+    setLoading(true);
     axios
       .post("https://mikepostapp.herokuapp.com/auth/signup", {
         name: username,
@@ -54,6 +57,7 @@ export default function SignupModal({ handleClose }) {
       })
       .then((response) => {
         console.log(response);
+        setLoading(false);
         setAccountCreated(true);
       })
       .catch((error) => {
@@ -67,6 +71,8 @@ export default function SignupModal({ handleClose }) {
         <AccountCreatedModal handleClose={handleAccountCreatedModalOpen} />
       )
     );
+  } else if (loading) {
+    return loading && <Loader />;
   } else {
     return (
       <Backdrop>
