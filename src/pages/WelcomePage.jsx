@@ -24,6 +24,8 @@ function WelcomePage() {
     setLoginModalOpen(state);
     setSignupModalOpen(false);
   };
+
+  // check for small screen
   useEffect(() => {
     if (width >= 640) {
       setSmallScreen(false);
@@ -34,6 +36,18 @@ function WelcomePage() {
       null;
     };
   }, [width]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    console.log(token);
+    // if token exists redirect to feed page
+    if (token) {
+      window.location.href = "/feed";
+    } else {
+      null;
+    }
+  }, []);
+
   return (
     <main className="flex flex-col md:flex-row h-screen justify-start items-start overflow-y-scroll">
       {/* Modal */}
