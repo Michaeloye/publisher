@@ -56,9 +56,11 @@ export default function SignupModal({ handleClose }) {
         password: password,
         passwordConfirm: confirmPassword,
       })
-      .then((response) => {
-        console.log(response);
+      .then((res) => {
+        const token = res.data.token;
+        console.log(res);
         setLoading(false);
+        localStorage.setItem("token", token);
         window.location.href = `feed`;
       })
       .catch((error) => {
@@ -71,8 +73,8 @@ export default function SignupModal({ handleClose }) {
         }
       });
   }
-  // if loading disply Loader
 
+  // if error occurs disply ErrorOccuredModal
   if (errorOccured) {
     return <ErrorOccuredModal handleClose={handleErrorOccuredModal()} />;
   } else {
