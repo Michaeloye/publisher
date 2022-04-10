@@ -4,8 +4,8 @@ import { GrMail } from "react-icons/gr";
 
 const Icons = {
   1: <FaUser className="absolute top-2 text-gray-300 left-3 " />,
-  2: <GrMail className="absolute top-2 text-gray-300 left-3 " />,
-  3: <RiLockPasswordFill className="absolute top-2 text-gray-300 left-3 " />,
+  2: <GrMail className="absolute top-3 text-gray-300 left-3 " />,
+  3: <RiLockPasswordFill className="absolute top-3 text-gray-300 left-3 " />,
 };
 function Input({ icon, type, name, placeHolder, changeInput }) {
   return (
