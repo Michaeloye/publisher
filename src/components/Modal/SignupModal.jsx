@@ -43,7 +43,7 @@ export default function SignupModal({ handleClose }) {
     }
   }
   function handleErrorOccuredModal(state) {
-    setEmailExist(state);
+    setErrorOccured(state);
   }
   // account created handler
 
