@@ -28,14 +28,17 @@ function CommentSection() {
           author="andrew neil"
         />
         <Comment title="lorem ispium" content="" author="andrew neil" />
-        {posts.map((post) => (
-          <Comment
-            key={post._id}
-            title={post.title}
-            content={post.content}
-            author={post.creator.name}
-          />
-        ))}
+        {posts.map((post) => {
+          return (
+            <Comment
+              key={post._id}
+              title={post.title}
+              content={post.content}
+              author={post.creator.name}
+              since={post.createAt}
+            />
+          );
+        })}
         <Comment
           title="lorem ispium"
           content="
