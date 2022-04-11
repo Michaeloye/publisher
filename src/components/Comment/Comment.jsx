@@ -1,8 +1,9 @@
 import React from "react";
+import timeSince from "../../utils/timeSince";
 import LikeDislike from "../LikeDislike";
 import ProfilePicture from "../ProfilePicture";
 
-function Comment({ title, content, author }) {
+function Comment({ title, content, author, since }) {
   return (
     <div className="bg-white h-auto w-[80%] mx-auto rounded-md flex text-left pt-7 pr-4 md:pr-5 pb-5 shadow-lg mb-5">
       <div className="min-w-[60px] md:min-w-[67px]">
@@ -20,7 +21,10 @@ function Comment({ title, content, author }) {
               Posted by <span className="text-primary-blue">{author}</span>
             </p>
           </div>
-          <p className="text-gray-600">12min ago</p>
+          {/* first of all 'since' returns a data; the date is converted to a string so as to properly
+          use the new Date func to convert to proper date string in which it can be used in 
+          timeSince func */}
+          <p className="text-gray-600">{timeSince(new Date(`${since}`))} ago</p>
         </div>
       </main>
     </div>
