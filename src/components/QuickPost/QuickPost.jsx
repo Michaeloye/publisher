@@ -1,15 +1,48 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 function QuickPost() {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [submit, setSubmit] = useState(false);
+  useEffect(() => {
+    axios
+      .post(
+        "https://mikepostapp.herokuapp.com/feed/post",
+        {
+          title: title,
+          content: content,
+        },
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+        setTitle("");
+        setContent("");
+      })
+      .catch((err) => console.log(err.message));
+    setSubmit(false);
+  }, [submit]);
   return (
-    <div className="md:w-3/4 flex flex-col items-center gap-3">
+    <form
+      className="md:w-3/4 flex flex-col items-center gap-3"
+      onSubmit={(e) => {
+        e.preventDefault();
+        setSubmit(true);
+      }}
+    >
       <p className="text-lg font-semibold">Quick Upload</p>
       <input
         type="text"
         name="topic"
-        placeholder="topic"
+        placeholder="title"
         autoComplete="off"
         spellCheck="false"
+        value={title}
         className="w-full h-8 md:h-9 px-9 py-1 rounded-full bg-white text-sm focus:outline-none lg:text-base inner shadow-inner"
         style={{
           "--tw-shadow": "inset 0 2px 4px 0 rgb(0 0 0 / 0.35)",
@@ -17,13 +50,15 @@ function QuickPost() {
           boxShadow:
             "var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)",
         }}
+        onChange={(e) => setTitle(e.target.value)}
       />
       <textarea
         type="text"
         name="topic"
-        placeholder="message"
+        placeholder="content"
         autoComplete="off"
         spellCheck="false"
+        value={content}
         className="w-full h-8 md:h-9 px-9 py-1 rounded-lg bg-white text-sm focus:outline-none lg:text-base inner shadow-inner"
         style={{
           "--tw-shadow": "inset 0 2px 4px 0 rgb(0 0 0 / 0.35)",
@@ -31,11 +66,15 @@ function QuickPost() {
           boxShadow:
             "var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)",
         }}
+        onChange={(e) => setContent(e.target.value)}
       ></textarea>
-      <div className="bg-primary-blue rounded-full h-12 w-40 flex justify-center items-center text-white font-semibold">
+      <button
+        type="submit"
+        className="bg-primary-blue rounded-full h-12 w-40 flex justify-center items-center text-white font-semibold"
+      >
         Post
-      </div>
-    </div>
+      </button>
+    </form>
   );
 }
 
