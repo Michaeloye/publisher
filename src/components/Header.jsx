@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import Notification from "./Notification";
 import ProfilePicture from "./ProfilePicture";
@@ -16,9 +17,9 @@ function Header() {
       to each other  */}
       <div className="flex items-center gap-5">
         <Notification />
-        <div className="mr-3 md:mr-10">
+        <Link to={"/profile"} className="mr-3 md:mr-10">
           <ProfilePicture />
-        </div>
+        </Link>
       </div>
     </div>
   );
