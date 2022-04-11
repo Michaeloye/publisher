@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Comment from "../Comment/Comment";
 import ProfileDetails from "../ProfileDetails";
 
 function ProfileSection() {
+  const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    const name = localStorage.getItem("name");
+    setUserName(name);
+    return () => {
+      null;
+    };
+  }, []);
+
   return (
     <div
       className="bg-primary-gray w-full h-screen overflow-y-scroll"
       id="comment-section"
     >
-      <ProfileDetails />
+      <ProfileDetails userName={userName} />
       {/* The above styling is what enalbes the center page to be scrollable. The scroll bar
   is invisible thanks to the styling in index.css #comment-section */}
       <div>
