@@ -64,7 +64,7 @@ export default function SignupModal({ handleClose }) {
         setLoading(false);
         localStorage.setItem("token", token);
         localStorage.setItem("name", name);
-        window.location.href = `/feed`;
+        window.location.href = `/#/feed`;
       })
       .catch((error) => {
         if (error.message === "Request failed with status code 400") {
