@@ -56,6 +56,7 @@ function QuickPost() {
         autoComplete="off"
         spellCheck="false"
         value={title}
+        required={true}
         className="w-full h-8 md:h-9 px-9 py-1 rounded-full bg-white text-sm focus:outline-none lg:text-base inner shadow-inner"
         style={{
           "--tw-shadow": "inset 0 2px 4px 0 rgb(0 0 0 / 0.35)",
@@ -72,6 +73,7 @@ function QuickPost() {
         autoComplete="off"
         spellCheck="false"
         value={content}
+        required={true}
         className="w-full h-8 md:h-9 px-9 py-1 rounded-lg bg-white text-sm focus:outline-none lg:text-base inner shadow-inner"
         style={{
           "--tw-shadow": "inset 0 2px 4px 0 rgb(0 0 0 / 0.35)",
@@ -87,18 +89,6 @@ function QuickPost() {
       >
         Post
       </button>
-      {/* <ToastContainer
-        position="bottom-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick={false}
-        rtl={false}
-        pauseOnFocusLoss={false}
-        draggable={false}
-        pauseOnHover={false}
-      /> */}
-      {/* <ToastContainer /> */}
     </form>
   );
 }
