@@ -3,11 +3,14 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+toast.configure();
+
 function QuickPost() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [submit, setSubmit] = useState(false);
-  useEffect(() => {
+
+  function handleSubmit(e) {
+    e.preventDefault();
     axios
       .post(
         "https://mikepostapp.herokuapp.com/feed/post",
@@ -25,26 +28,25 @@ function QuickPost() {
         console.log(res.data);
         setTitle("");
         setContent("");
+        // toastify message
         toast.success("Post added 🚀!", {
           position: "bottom-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: false,
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
           pauseOnHover: false,
-          draggable: false,
+          draggable: true,
           progress: undefined,
+          closeButton: false,
         });
       })
+
       .catch((err) => console.log(err.message));
-    setSubmit(false);
-  }, [submit]);
+  }
   return (
     <form
       className="md:w-3/4 flex flex-col items-center gap-3"
-      onSubmit={(e) => {
-        e.preventDefault();
-        setSubmit(true);
-      }}
+      onSubmit={(e) => handleSubmit(e)}
     >
       <p className="text-lg font-semibold">Quick Upload</p>
       <input
@@ -96,7 +98,7 @@ function QuickPost() {
         draggable={false}
         pauseOnHover={false}
       /> */}
-      <ToastContainer />
+      {/* <ToastContainer /> */}
     </form>
   );
 }
