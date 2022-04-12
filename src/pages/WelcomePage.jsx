@@ -42,7 +42,7 @@ function WelcomePage() {
     console.log(token);
     // if token exists redirect to feed page
     if (token) {
-      window.location.href = "/feed";
+      window.location.href = "/#/feed";
     } else {
       null;
     }
