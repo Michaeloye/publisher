@@ -46,7 +46,7 @@ export default function LoginModal({ handleClose }) {
         setLoading(false);
         localStorage.setItem("token", token);
         localStorage.setItem("name", name);
-        window.location.href = `/feed`;
+        window.location.href = `/#/feed`;
       })
       .catch((error) => {
         console.log(error.message);
