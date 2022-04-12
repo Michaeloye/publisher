@@ -21,8 +21,8 @@ function App() {
   //   };
   // }, []);
   return (
-    <HashRouter>
-      <div className="App bg-primary-gray h-screen overflow-y-hidden">
+    <div className="App bg-primary-gray h-screen overflow-y-hidden">
+      <HashRouter>
         {/* There is a link between App having a viewport height and overflow of hidden this is so 
       that while the entire screen remains unscrollable the stylings applied to CommentSection enalbes 
       only CommentSection that is the center page scrollable */}
@@ -33,8 +33,8 @@ function App() {
           <Route exact path="/feed" element={<Home />} />
           <Route exact path="/profile" element={<Profile />} />
         </Routes>
-      </div>
-    </HashRouter>
+      </HashRouter>
+    </div>
   );
 }
 
