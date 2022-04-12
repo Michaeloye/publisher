@@ -10,6 +10,8 @@ import LoginModal from "../components/Modal/LoginModal";
 import useScreensize from "../hooks/useScreensize";
 
 function WelcomePage() {
+  const [posts, setPosts] = useState([]);
+
   const [smallScreen, setSmallScreen] = useState("");
   const [signupModalOpen, setSignupModalOpen] = useState(false);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
@@ -46,6 +48,13 @@ function WelcomePage() {
     } else {
       null;
     }
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get("https://mikepostapp.herokuapp.com/feed/posts")
+      .then((res) => setPosts(res.data.posts))
+      .catch((err) => console.log(err.message));
   }, []);
 
   return (
@@ -96,41 +105,19 @@ function WelcomePage() {
         <p className="text-left font-semibold ml-10 md:ml-20 mb-4">
           Popular posts
         </p>
-        <Comment
-          title="lorem ispium"
-          description="
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vero esse a eligendi, cum accusamus debitis consequatur fugit saepe veritatis atque? Exercitationem, esse tempora mollitia dignissimos minus illo omnis quidem?
-        "
-          author="andrew neil"
-        />
-        <Comment
-          title="lorem ispium"
-          description="
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vero esse a eligendi, cum accusamus debitis consequatur fugit saepe veritatis atque? Exercitationem, esse tempora mollitia dignissimos minus illo omnis quidem?
-        "
-          author="andrew neil"
-        />
-        <Comment
-          title="lorem ispium"
-          description="
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vero esse a eligendi, cum accusamus debitis consequatur fugit saepe veritatis atque? Exercitationem, esse tempora mollitia dignissimos minus illo omnis quidem?
-        "
-          author="andrew neil"
-        />
-        <Comment
-          title="lorem ispium"
-          description="
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vero esse a eligendi, cum accusamus debitis consequatur fugit saepe veritatis atque? Exercitationem, esse tempora mollitia dignissimos minus illo omnis quidem?
-        "
-          author="andrew neil"
-        />
-        <Comment
-          title="lorem ispium"
-          description="
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vero esse a eligendi, cum accusamus debitis consequatur fugit saepe veritatis atque? Exercitationem, esse tempora mollitia dignissimos minus illo omnis quidem?
-        "
-          author="andrew neil"
-        />
+
+        {posts.slice(0, 5).map((post) => {
+          return (
+            <Comment
+              key={post._id}
+              title={post.title}
+              content={post.content}
+              author={post.creator.name}
+              since={post.createAt}
+            />
+          );
+        })}
+
         <br />
         <br />
         {smallScreen && (
