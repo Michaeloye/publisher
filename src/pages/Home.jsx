@@ -22,7 +22,7 @@ function Home() {
     const token = localStorage.getItem("token");
     console.log(token);
     if (token === null) {
-      window.location.href = "/";
+      window.location.href = "/#";
     } else {
       // verify token here
     }
