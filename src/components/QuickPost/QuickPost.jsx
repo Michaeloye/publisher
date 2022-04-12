@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function QuickPost() {
   const [title, setTitle] = useState("");
@@ -23,6 +25,15 @@ function QuickPost() {
         console.log(res.data);
         setTitle("");
         setContent("");
+        toast.success("Post added 🚀!", {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+        });
       })
       .catch((err) => console.log(err.message));
     setSubmit(false);
@@ -74,6 +85,18 @@ function QuickPost() {
       >
         Post
       </button>
+      {/* <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable={false}
+        pauseOnHover={false}
+      /> */}
+      <ToastContainer />
     </form>
   );
 }
