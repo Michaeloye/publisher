@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import Header from "./components/Header";
 import useScreensize from "./hooks/useScreensize";
 import Home from "./pages/Home";
@@ -21,7 +21,7 @@ function App() {
   //   };
   // }, []);
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="App bg-primary-gray h-screen overflow-y-hidden">
         {/* There is a link between App having a viewport height and overflow of hidden this is so 
       that while the entire screen remains unscrollable the stylings applied to CommentSection enalbes 
@@ -34,7 +34,7 @@ function App() {
           <Route exact path="/profile" element={<Profile />} />
         </Routes>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
