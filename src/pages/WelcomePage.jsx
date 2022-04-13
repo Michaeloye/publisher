@@ -8,6 +8,7 @@ import Footer from "../components/Footer/Footer";
 import SignupModal from "../components/Modal/SignupModal";
 import LoginModal from "../components/Modal/LoginModal";
 import useScreensize from "../hooks/useScreensize";
+import axios from "axios";
 
 function WelcomePage() {
   const [posts, setPosts] = useState([]);
