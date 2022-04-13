@@ -63,7 +63,7 @@ export default function StartTopicModal({ handleClose }) {
         <h1 className="md:text-xl font-semibold -mt-3">Make post</h1>
 
         <form
-          className="flex flex-col items-center w-3/4 gap-5 md:gap-7"
+          className="flex flex-col items-center w-3/4 gap-5"
           onSubmit={(e) => handleSubmit(e)}
         >
           <input
@@ -74,7 +74,7 @@ export default function StartTopicModal({ handleClose }) {
             spellCheck="false"
             value={title}
             required={true}
-            className="h-10 md:h-9 px-5 py-1 rounded-full bg-white text-sm focus:outline-none lg:text-base border border-gray-600 shadow-sm text-gray-700"
+            className="h-10 md:w-full md:h-9 px-5 py-1 rounded-full bg-white text-sm focus:outline-none lg:text-base border border-gray-600 shadow text-gray-700"
             onChange={(e) => setTitle(e.target.value)}
           />
           <textarea
@@ -85,7 +85,7 @@ export default function StartTopicModal({ handleClose }) {
             spellCheck="false"
             value={content}
             required={true}
-            className="h-10 md:h-9 px-5 py-1 rounded-lg bg-white text-sm focus:outline-none lg:text-base border border-gray-600 shadow-sm text-gray-700"
+            className="h-10 md:w-full md:h-9 md:min-h-[30px] px-5 py-1 rounded-lg bg-white text-sm focus:outline-none lg:text-base border border-gray-600 shadow text-gray-700"
             onChange={(e) => setContent(e.target.value)}
           />
           {loading && <Loader />}
