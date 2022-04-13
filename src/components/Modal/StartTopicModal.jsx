@@ -33,6 +33,7 @@ export default function StartTopicModal({ handleClose }) {
         setTitle("");
         setContent("");
         setLoading(false);
+        handleClose(false);
         // toastify message
         toast.success("Post added 🚀!", {
           position: "bottom-center",
