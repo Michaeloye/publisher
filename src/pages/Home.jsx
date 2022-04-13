@@ -53,7 +53,11 @@ function Home() {
       )}
 
       {/* other */}
-      {smallScreen ? "" : <OtherInfo />}
+      {smallScreen ? (
+        ""
+      ) : (
+        <OtherInfo onClick={() => handleStartTopicModal(true)} />
+      )}
     </div>
   );
 }
