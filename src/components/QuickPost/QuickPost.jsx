@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 toast.configure();
@@ -67,7 +67,7 @@ function QuickPost() {
       />
       <textarea
         type="text"
-        name="topic"
+        name="content"
         placeholder="content"
         autoComplete="off"
         spellCheck="false"
