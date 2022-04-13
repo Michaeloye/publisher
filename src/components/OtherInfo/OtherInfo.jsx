@@ -4,14 +4,14 @@ import QuickPost from "../QuickPost/QuickPost";
 import StartTopic from "../StartTopic";
 import TopTopics from "../TopTopics/TopTopics";
 
-function OtherInfo() {
+function OtherInfo({ onClick }) {
   return (
     <div
       className="bg-primary-gray md:w-1/3 lg:w-1/2 flex flex-col items-center gap-10 h-screen overflow-y-scroll overflow-x-hidden border-2"
       id="other-info"
     >
       <div className="mt-5">
-        <StartTopic />
+        <StartTopic onClick={() => onClick()} />
       </div>
       <TopTopics />
       <QuickPost />
