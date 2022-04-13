@@ -5,7 +5,7 @@ import ProfilePicture from "../ProfilePicture";
 
 function Comment({ title, content, author, since }) {
   return (
-    <div className="bg-white h-auto w-[80%] mx-auto rounded-md flex text-left pt-7 pr-4 md:pr-5 pb-5 shadow-lg mb-5">
+    <div className="bg-white h-auto w-[90%] md:w-[80%] mx-auto rounded-md flex text-left pt-7 pr-4 md:pr-5 pb-5 shadow-lg mb-5">
       <div className="min-w-[60px] md:min-w-[67px]">
         <LikeDislike number={20} />
       </div>
