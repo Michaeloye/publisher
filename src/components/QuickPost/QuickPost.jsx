@@ -25,7 +25,6 @@ function QuickPost() {
         }
       )
       .then((res) => {
-        console.log(res.data);
         setTitle("");
         setContent("");
         // toastify message

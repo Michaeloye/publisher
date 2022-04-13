@@ -42,7 +42,6 @@ function WelcomePage() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    console.log(token);
     // if token exists redirect to feed page
     if (token) {
       window.location.href = "/#/feed";
