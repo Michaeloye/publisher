@@ -6,9 +6,10 @@ function CommentSection() {
   const [posts, setPosts] = useState([]);
   // be sure if should only fetch comments on mount
   useEffect(() => {
+    // reversing the array so as to be sorted in ascending order from recent to long ago
     axios
       .get("https://mikepostapp.herokuapp.com/feed/posts")
-      .then((res) => setPosts(res.data.posts))
+      .then((res) => setPosts(res.data.posts.reverse()))
       .catch((err) => console.log(err.message));
   }, []);
   return (
