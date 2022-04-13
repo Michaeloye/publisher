@@ -3,6 +3,7 @@ import BottomNav from "../components/BottomNav/BottomNav";
 import CommentSection from "../components/CommentSection/CommentSection";
 import OtherInfo from "../components/OtherInfo/OtherInfo";
 import SideNav from "../components/SideNav/SideNav";
+import StartTopic from "../components/StartTopic";
 import useScreensize from "../hooks/useScreensize";
 
 function Home() {
@@ -30,8 +31,14 @@ function Home() {
 
   return (
     <div className="md:flex md:justify-around">
+      {/* nav */}
       {smallScreen ? <BottomNav /> : <SideNav />}
+
+      {/* content */}
       <CommentSection />
+      {smallScreen ? <StartTopic /> : ""}
+
+      {/* other */}
       {smallScreen ? "" : <OtherInfo />}
     </div>
   );
