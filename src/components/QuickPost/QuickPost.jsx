@@ -73,7 +73,7 @@ function QuickPost() {
         spellCheck="false"
         value={content}
         required={true}
-        className="w-full h-8 md:h-9 px-9 py-1 rounded-lg bg-white text-sm focus:outline-none lg:text-base inner shadow-inner"
+        className="w-full md:h-9 min-h-[50px] px-9 py-1 rounded-lg bg-white text-sm focus:outline-none lg:text-base inner shadow-inner"
         style={{
           "--tw-shadow": "inset 0 2px 4px 0 rgb(0 0 0 / 0.35)",
           "--tw-shadow-colored": "inset 0 2px 4px 0 var(--tw-shadow-color)",
