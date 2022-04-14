@@ -1,15 +1,20 @@
 import { useState, useEffect } from "react";
 import Comment from "../Comment/Comment";
 import axios from "axios";
+import BasicLoader from "../Loader/BasicLoader";
 
 function CommentSection() {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
   // be sure if should only fetch comments on mount
   useEffect(() => {
     // reversing the array so as to be sorted in ascending order from recent to long ago
     axios
       .get("https://mikepostapp.herokuapp.com/feed/posts")
-      .then((res) => setPosts(res.data.posts.reverse()))
+      .then((res) => {
+        setPosts(res.data.posts.reverse());
+        setLoading(false);
+      })
       .catch((err) => console.log(err.message));
   }, []);
   return (
@@ -21,6 +26,11 @@ function CommentSection() {
       is invisible because of the styling in index.css #comment-section */}
       <div>
         <br />
+        {loading && (
+          <div className="flex items-center justify-center">
+            <BasicLoader />
+          </div>
+        )}
         {posts.map((post) => {
           return (
             <Comment
