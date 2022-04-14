@@ -41,11 +41,13 @@ export default function LoginModal({ handleClose }) {
       .then((res) => {
         const token = res.data.token;
         const name = res.data.user.name;
+        const userId = res.data.user._id;
 
         console.log(res);
         setLoading(false);
         localStorage.setItem("token", token);
         localStorage.setItem("name", name);
+        localStorage.setItem("userId", userId);
         window.location.href = `/#/feed`;
       })
       .catch((error) => {
