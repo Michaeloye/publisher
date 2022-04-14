@@ -7,6 +7,9 @@ import Home from "./pages/Home";
 import axios from "axios";
 import WelcomePage from "./pages/WelcomePage";
 import Profile from "./pages/Profile";
+import Explore from "./pages/Explore";
+import Topics from "./pages/Topics";
+import MyComments from "./pages/MyComments";
 
 function App() {
   const { width } = useScreensize();
@@ -32,6 +35,9 @@ function App() {
           <Route exact path="/" element={<WelcomePage />} />
           <Route exact path="/feed" element={<Home />} />
           <Route exact path="/profile" element={<Profile />} />
+          <Route exact path="/explore" element={<Explore />} />
+          <Route exact path="/topics" element={<Topics />} />
+          <Route exact path="/my-comments" element={<MyComments />} />
         </Routes>
       </HashRouter>
     </div>
