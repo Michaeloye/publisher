@@ -1,8 +1,10 @@
 import React from "react";
+import AvatarIcon from "../assets/avatar-icon.png";
 
 function ProfilePicture({ size = "medium" }) {
   return (
-    <div
+    <img
+      src={AvatarIcon}
       className={
         "bg-gray-300 rounded-full " +
         (size == "small"
@@ -13,7 +15,7 @@ function ProfilePicture({ size = "medium" }) {
           ? "h-20 w-20 md:h-32 md:w-32 "
           : "")
       }
-    ></div>
+    />
   );
 }
 
