@@ -9,9 +9,12 @@ import SignupModal from "../components/Modal/SignupModal";
 import LoginModal from "../components/Modal/LoginModal";
 import useScreensize from "../hooks/useScreensize";
 import axios from "axios";
+import BasicLoader from "../components/Loader/BasicLoader";
 
 function WelcomePage() {
   const [posts, setPosts] = useState([]);
+
+  const [loading, setLoading] = useState(true);
 
   const [smallScreen, setSmallScreen] = useState("");
   const [signupModalOpen, setSignupModalOpen] = useState(false);
@@ -53,7 +56,10 @@ function WelcomePage() {
   useEffect(() => {
     axios
       .get("https://mikepostapp.herokuapp.com/feed/posts")
-      .then((res) => setPosts(res.data.posts))
+      .then((res) => {
+        setPosts(res.data.posts);
+        setLoading(false);
+      })
       .catch((err) => console.log(err.message));
   }, []);
 
@@ -106,6 +112,11 @@ function WelcomePage() {
           Popular posts
         </p>
 
+        {loading && (
+          <div className="flex items-center justify-center mt-3">
+            <BasicLoader />
+          </div>
+        )}
         {posts.slice(0, 5).map((post) => {
           return (
             <Comment
