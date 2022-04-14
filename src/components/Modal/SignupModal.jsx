@@ -58,12 +58,14 @@ export default function SignupModal({ handleClose }) {
       })
       .then((res) => {
         const token = res.data.token;
-        const name = res.data.user.name;
+        const name = res.data.newUser.name;
+        const userId = res.data.newUser._id;
 
         console.log(res);
         setLoading(false);
         localStorage.setItem("token", token);
         localStorage.setItem("name", name);
+        localStorage.setItem("userId", userId);
         window.location.href = `/#/feed`;
       })
       .catch((error) => {
