@@ -13,7 +13,7 @@ const navList = {
   1: "/feed",
   2: "/explore",
   3: "/topics",
-  4: "/mycomments",
+  4: "/my-comments",
 };
 function NavElement({ iconNumber, text, active }) {
   return (
