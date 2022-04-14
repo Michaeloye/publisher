@@ -54,10 +54,11 @@ function WelcomePage() {
   }, []);
 
   useEffect(() => {
+    // reversing the array so as to be sorted in ascending order from recent to long ago
     axios
       .get("https://mikepostapp.herokuapp.com/feed/posts")
       .then((res) => {
-        setPosts(res.data.posts);
+        setPosts(res.data.posts.reverse());
         setLoading(false);
       })
       .catch((err) => console.log(err.message));
