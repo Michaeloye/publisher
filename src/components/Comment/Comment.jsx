@@ -17,14 +17,16 @@ function Comment({ title, content, author, since }) {
         <div className="flex justify-between text-xs items-center mt-2">
           <div className="flex items-center gap-3">
             <ProfilePicture />
-            <p>
+            <p className="w-[155px] whitespace-nowrap overflow-hidden text-ellipsis">
               Posted by <span className="text-primary-blue">{author}</span>
             </p>
           </div>
           {/* first of all 'since' returns a data; the date is converted to a string so as to properly
           use the new Date func to convert to proper date string in which it can be used in 
           timeSince func */}
-          <p className="text-gray-600">{timeSince(new Date(`${since}`))} ago</p>
+          <p className="text-gray-600 whitespace-nowrap">
+            {timeSince(new Date(`${since}`))} ago
+          </p>
         </div>
       </main>
     </div>
