@@ -108,7 +108,7 @@ function WelcomePage() {
       </div>
 
       {/* Comments */}
-      <div className="md:mt-10 md:w-3/4 items-center justify-center">
+      <div className="md:mt-10 md:w-3/4 items-center justify-center mx-auto">
         <p className="text-left font-semibold ml-10 md:ml-20 mb-4">
           Popular posts
         </p>
