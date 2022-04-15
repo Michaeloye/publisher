@@ -16,12 +16,12 @@ function timeSince(date) {
   }
   interval = seconds / 3600;
   if (interval > 1) {
-    return Math.floor(interval) + " hours";
+    return Math.floor(interval) + " hrs";
   }
   interval = seconds / 60;
   if (interval > 1) {
-    return Math.floor(interval) + " minutes";
+    return Math.floor(interval) + " mins";
   }
-  return Math.floor(seconds) + " seconds";
+  return Math.floor(seconds) + " secs";
 }
 export default timeSince;
