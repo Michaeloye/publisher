@@ -41,8 +41,8 @@ function ProfileSection() {
   is invisible thanks to the styling in index.css #comment-section */}
       <div>
         <br />
-        <p className="text-left ml-20 md:ml-32 font-semibold mt-3 mb-3">
-          Latest posts
+        <p className="text-left ml-20 md:ml-28 font-semibold mt-3 mb-3">
+          My Latest posts
         </p>
         {loading && (
           <div className="flex items-center justify-center">
