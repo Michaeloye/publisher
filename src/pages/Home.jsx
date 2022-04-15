@@ -1,3 +1,4 @@
+import { AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import BottomNav from "../components/BottomNav/BottomNav";
 import CommentSection from "../components/CommentSection/CommentSection";
@@ -41,9 +42,18 @@ function Home() {
 
       {/* content */}
       <CommentSection />
-      {startTopicModalOpen && (
-        <StartTopicModal handleClose={handleStartTopicModal} />
-      )}
+
+      {/* modal */}
+      {/* Animate presence for animation */}
+      <AnimatePresence
+        initial={false}
+        exitBeforeEnter={true}
+        onExitComplete={() => null}
+      >
+        {startTopicModalOpen && (
+          <StartTopicModal handleClose={handleStartTopicModal} />
+        )}
+      </AnimatePresence>
 
       {smallScreen ? (
         <StartTopic onClick={() => handleStartTopicModal(true)} />

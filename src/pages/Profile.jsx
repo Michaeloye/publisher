@@ -6,6 +6,7 @@ import ProfileSection from "../components/ProfileSection/ProfileSection";
 import SideNav from "../components/SideNav/SideNav";
 import StartTopic from "../components/StartTopic";
 import useScreensize from "../hooks/useScreensize";
+import { AnimatePresence } from "framer-motion";
 
 function Profile() {
   const [smallScreen, setSmallScreen] = useState("");
@@ -41,9 +42,18 @@ function Profile() {
     <div className="md:flex md:justify-around">
       {smallScreen ? <BottomNav /> : <SideNav />}
       <ProfileSection />
-      {startTopicModalOpen && (
-        <StartTopicModal handleClose={handleStartTopicModal} />
-      )}
+
+      {/* modal */}
+      {/* Animate presence for animation */}
+      <AnimatePresence
+        initial={false}
+        exitBeforeEnter={true}
+        onExitComplete={() => null}
+      >
+        {startTopicModalOpen && (
+          <StartTopicModal handleClose={handleStartTopicModal} />
+        )}
+      </AnimatePresence>
 
       {smallScreen ? (
         <StartTopic onClick={() => handleStartTopicModal(true)} />
