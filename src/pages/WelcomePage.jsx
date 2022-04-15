@@ -87,7 +87,7 @@ function WelcomePage() {
       </AnimatePresence>
       {/* Image and Top users */}
       <div className="flex flex-col items-center justify-center mt-5 text-left md:w-1/2">
-        <StartTopic />
+        <StartTopic onClick={() => handleLoginModal(true)} />
         <div className="px-4 md:px-0 mt-3 md:ml-3 ">
           <h1 className="text-xl font-semibold">
             Dive into a network of Communities
