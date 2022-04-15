@@ -27,7 +27,6 @@ function Home() {
   // if user is not logged in redirect to landing page
   useEffect(() => {
     const token = localStorage.getItem("token");
-    console.log(token);
     if (token === null) {
       window.location.href = "/#";
     } else {
