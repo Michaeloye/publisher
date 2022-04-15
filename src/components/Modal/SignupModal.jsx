@@ -180,15 +180,15 @@ export default function SignupModal({ handleClose }) {
             )}
           </form>
           <p>or</p>
-          <div className="border-2 h-10 w-64 flex items-center justify-center gap-3 rounded-full cursor-pointer">
+          <div className="border-2 h-10 w-64 flex items-center justify-center gap-3 rounded-full cursor-not-allowed">
             <FcGoogle />{" "}
             <p className="text-sm md:text-base">Continue with Google</p>
           </div>
-          <div className="h-10 w-64 flex items-center justify-center gap-3 rounded-full bg-black text-white cursor-pointer">
+          <div className="h-10 w-64 flex items-center justify-center gap-3 rounded-full bg-black text-white cursor-not-allowed">
             <DiApple />
             <p className="text-sm md:text-base">Continue with Apple</p>
           </div>
-          <div className="h-10 w-64 flex items-center justify-center gap-3 rounded-full bg-blue-500 text-white cursor-pointer">
+          <div className="h-10 w-64 flex items-center justify-center gap-3 rounded-full bg-blue-500 text-white cursor-not-allowed">
             <GrFacebookOption />
             <p className="text-sm md:text-base">Continue with Facebook</p>
           </div>
