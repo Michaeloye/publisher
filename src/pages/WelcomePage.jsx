@@ -10,6 +10,7 @@ import LoginModal from "../components/Modal/LoginModal";
 import useScreensize from "../hooks/useScreensize";
 import axios from "axios";
 import BasicLoader from "../components/Loader/BasicLoader";
+import { AnimatePresence } from "framer-motion";
 
 function WelcomePage() {
   const [posts, setPosts] = useState([]);
@@ -67,9 +68,23 @@ function WelcomePage() {
   return (
     <main className="flex flex-col md:flex-row h-screen justify-start items-start overflow-y-scroll">
       {/* Modal */}
-      {signupModalOpen && <SignupModal handleClose={handleSignupModal} />}
-      {loginModalOpen && <LoginModal handleClose={handleLoginModal} />}
 
+      <AnimatePresence
+        initial={false}
+        exitBeforeEnter={true}
+        onExitComplete={() => null}
+      >
+        {signupModalOpen && <SignupModal handleClose={handleSignupModal} />}
+      </AnimatePresence>
+
+      {/* Animate presence for animation */}
+      <AnimatePresence
+        initial={false}
+        exitBeforeEnter={true}
+        onExitComplete={() => null}
+      >
+        {loginModalOpen && <LoginModal handleClose={handleLoginModal} />}
+      </AnimatePresence>
       {/* Image and Top users */}
       <div className="flex flex-col items-center justify-center mt-5 text-left md:w-1/2">
         <StartTopic />
