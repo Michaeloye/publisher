@@ -1,16 +1,28 @@
 import { useState } from "react";
+
 import Backdrop from "../Backdrop";
 import close from "../../assets/close.svg";
 import LoginOrSignup from "../LoginOrSignup";
+
 import { FcGoogle } from "react-icons/fc";
 import { GrFacebookOption } from "react-icons/gr";
 import { DiApple } from "react-icons/di";
+
 import Input from "../Input";
 import axios from "axios";
 import ErrorOccuredModal from "./ErrorOccuredModal";
 import Loader from "../Loader/Loader";
 
+import { motion } from "framer-motion";
+
 export default function SignupModal({ handleClose }) {
+  // animation variant
+  const modal = {
+    hidden: { opacity: 0, y: -100 },
+    visible: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: "100vh" },
+  };
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -85,9 +97,14 @@ export default function SignupModal({ handleClose }) {
   } else {
     return (
       <Backdrop>
-        <div
+        <motion.div
           className="relative mx-auto h-11/12 w-11/12 md:w-1/2 lg:w-1/3 bg-white flex flex-col items-center justify-center rounded-2xl gap-2 md:gap-3 py-3"
           onClick={(e) => e.stopPropagation()}
+          key="signup-modal"
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          variants={modal}
         >
           <img
             src={close}
@@ -175,7 +192,7 @@ export default function SignupModal({ handleClose }) {
             <GrFacebookOption />
             <p className="text-sm md:text-base">Continue with Facebook</p>
           </div>
-        </div>
+        </motion.div>
       </Backdrop>
     );
   }
