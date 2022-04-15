@@ -5,10 +5,18 @@ import axios from "axios";
 import Loader from "../Loader/Loader";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { motion } from "framer-motion";
 
 toast.configure();
 
 export default function StartTopicModal({ handleClose }) {
+  // animation variant
+  const modal = {
+    hidden: { opacity: 0, y: -100 },
+    visible: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: "100vh" },
+  };
+
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -52,9 +60,14 @@ export default function StartTopicModal({ handleClose }) {
 
   return (
     <Backdrop>
-      <div
+      <motion.div
         className="relative mx-auto min-h-[300px] w-11/12 md:w-1/2 lg:w-1/3 bg-white flex flex-col items-center justify-center rounded-2xl gap-2 md:gap-3 py-7"
         onClick={(e) => e.stopPropagation()}
+        key="signup-modal"
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        variants={modal}
       >
         <img
           src={close}
@@ -97,7 +110,7 @@ export default function StartTopicModal({ handleClose }) {
             Post
           </button>
         </form>
-      </div>
+      </motion.div>
     </Backdrop>
   );
 }
