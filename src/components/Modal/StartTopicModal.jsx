@@ -63,7 +63,7 @@ export default function StartTopicModal({ handleClose }) {
       <motion.div
         className="relative mx-auto min-h-[300px] w-11/12 md:w-1/2 lg:w-1/3 bg-white flex flex-col items-center justify-center rounded-2xl gap-2 md:gap-3 py-7"
         onClick={(e) => e.stopPropagation()}
-        key="signup-modal"
+        key="start-topic-modal"
         initial="hidden"
         animate="visible"
         exit="exit"
