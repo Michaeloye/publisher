@@ -22,8 +22,6 @@ function Comment({ authorId, title, content, author, since }) {
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
-    console.log("authorId", authorId);
-    console.log("userId", userId);
 
     // check if authorId and userId match
     setIsMyComment(authorId === userId);
@@ -61,18 +59,18 @@ function Comment({ authorId, title, content, author, since }) {
         </div>
         {/* Edit and delete button shown based on if the comment belongs to the user => authorId and userId match*/}
         {isMyComment && (
-          <div className="flex gap-3 absolute top-2 right-3 ">
+          <div className="flex gap-3 absolute top-1 right-3 ">
             <button
-              className="bg-primary-blue border border-primary-blue rounded px-3 py-1 hover:bg-transparent 
+              className="bg-[#00007463] border border-primary-blue rounded px-2 py-[2px] hover:bg-transparent 
           text-white hover:text-primary-blue"
             >
-              <FiEdit3 size={18} className="" />
+              <FiEdit3 size={15} className="" />
             </button>
             <button
-              className="bg-red-700 border border-red-700 rounded px-3 py-1 hover:bg-transparent 
+              className="bg-[#9d4747] border border-red-700 rounded px-2 py-[2px] hover:bg-transparent 
           text-white hover:text-red-700"
             >
-              <MdDelete size={18} />
+              <MdDelete size={15} />
             </button>
           </div>
         )}
