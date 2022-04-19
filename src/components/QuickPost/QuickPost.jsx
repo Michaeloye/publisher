@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PostButton from "../PostButton";
 
 toast.configure();
 
@@ -82,12 +83,7 @@ function QuickPost() {
         }}
         onChange={(e) => setContent(e.target.value)}
       ></textarea>
-      <button
-        type="submit"
-        className="bg-primary-blue rounded-full h-12 w-40 flex justify-center items-center text-white font-semibold"
-      >
-        Post
-      </button>
+      <PostButton />
     </form>
   );
 }
