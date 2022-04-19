@@ -2,10 +2,24 @@ import React from "react";
 import timeSince from "../../utils/timeSince";
 import LikeDislike from "../LikeDislike";
 import ProfilePicture from "../ProfilePicture";
+import { motion } from "framer-motion";
 
 function Comment({ title, content, author, since }) {
+  // animation variant
+  const comment = {
+    hidden: { opacity: 0, y: -100 },
+    visible: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: "100vh" },
+  };
+
   return (
-    <div className="bg-white h-auto w-[90%] md:w-[80%] mx-auto rounded-md flex text-left pt-7 pr-4 md:pr-5 pb-5 shadow-lg mb-5">
+    <motion.div
+      className="bg-white h-auto w-[90%] md:w-[80%] mx-auto rounded-md flex text-left pt-7 pr-4 md:pr-5 pb-5 shadow-lg mb-5"
+      key="comment"
+      initial="hidden"
+      animate="visible"
+      variants={comment}
+    >
       <div className="min-w-[60px] md:min-w-[67px]">
         <LikeDislike number={20} />
       </div>
@@ -29,7 +43,7 @@ function Comment({ title, content, author, since }) {
           </p>
         </div>
       </main>
-    </div>
+    </motion.div>
   );
 }
 
