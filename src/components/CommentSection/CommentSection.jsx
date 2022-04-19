@@ -35,6 +35,7 @@ function CommentSection() {
           return (
             <Comment
               key={post._id}
+              authorId={post.creator._id}
               title={post.title}
               content={post.content}
               author={post.creator.name}
