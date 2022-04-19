@@ -6,6 +6,7 @@ import Loader from "../Loader/Loader";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { motion } from "framer-motion";
+import PostButton from "../PostButton";
 
 toast.configure();
 
@@ -99,16 +100,11 @@ export default function StartTopicModal({ handleClose }) {
             spellCheck="false"
             value={content}
             required={true}
-            className="h-10 md:w-full md:h-9 md:min-h-[30px] px-5 py-1 rounded-lg bg-white text-sm focus:outline-none lg:text-base border border-gray-600 shadow text-gray-700"
+            className="h-20 md:w-full md:min-h-[80px] px-5 py-1 rounded-lg bg-white text-sm focus:outline-none lg:text-base border border-gray-600 shadow text-gray-700"
             onChange={(e) => setContent(e.target.value)}
           />
           {loading && <Loader />}
-          <button
-            type="submit"
-            className="bg-primary-blue rounded-full h-12 w-40 mt-3 flex justify-center items-center text-white font-semibold"
-          >
-            Post
-          </button>
+          <PostButton />
         </form>
       </motion.div>
     </Backdrop>
