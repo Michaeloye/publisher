@@ -16,7 +16,7 @@ function CommentSection() {
         setLoading(false);
       })
       .catch((err) => console.log(err.message));
-  }, []);
+  });
   return (
     <div
       className="bg-primary-gray w-full h-screen overflow-y-scroll"
