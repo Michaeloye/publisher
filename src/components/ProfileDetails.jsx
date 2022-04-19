@@ -1,7 +1,15 @@
 import React from "react";
 import ProfilePicture from "./ProfilePicture";
 
+import { motion } from "framer-motion";
+
 function ProfileDetails({ userName }) {
+  // animation variant
+  const logoutButton = {
+    whileHover: { scale: 0.9 },
+    whileTap: { scale: 0.9 },
+  };
+
   function handleLogout() {
     localStorage.removeItem("name");
     localStorage.removeItem("token");
@@ -17,12 +25,15 @@ function ProfileDetails({ userName }) {
           {userName}
         </h1>
       </div>
-      <button
+      <motion.button
         className="bg-red-700 text-base md:text-lg text-white px-5 py-2 mr-4 rounded-md shadow "
         onClick={() => handleLogout()}
+        whileHover="whileHover"
+        whileTap="whileTap"
+        variants={logoutButton}
       >
         Logout
-      </button>
+      </motion.button>
     </div>
   );
 }
