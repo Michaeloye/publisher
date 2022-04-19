@@ -24,7 +24,7 @@ function Header() {
         {location !== "/" && (
           <>
             <Notification />
-            <Link to={"/profile"} className="mr-3 md:mr-10">
+            <Link to={"/profile"} className="mr-3 md:mr-10 hover:opacity-90">
               <ProfilePicture />
             </Link>
           </>
