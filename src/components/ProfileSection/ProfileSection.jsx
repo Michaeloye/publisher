@@ -3,6 +3,7 @@ import Comment from "../Comment/Comment";
 import ProfileDetails from "../ProfileDetails";
 import BasicLoader from "../Loader/BasicLoader";
 import axios from "axios";
+import { AnimatePresence } from "framer-motion";
 
 function ProfileSection() {
   const [userName, setUserName] = useState("");
@@ -49,20 +50,23 @@ function ProfileSection() {
             <BasicLoader />
           </div>
         )}
-        {posts
-          .filter((post) => post.creator._id === userId)
-          .map((post) => {
-            return (
-              <Comment
-                key={post._id}
-                authorId={post.creator._id}
-                title={post.title}
-                content={post.content}
-                author={post.creator.name}
-                since={post.createAt}
-              />
-            );
-          })}
+        <AnimatePresence initial={false}>
+          {posts
+            .filter((post) => post.creator._id === userId)
+            .map((post) => {
+              return (
+                <Comment
+                  key={post._id}
+                  authorId={post.creator._id}
+                  postId={post._id}
+                  title={post.title}
+                  content={post.content}
+                  author={post.creator.name}
+                  since={post.createAt}
+                />
+              );
+            })}
+        </AnimatePresence>
         <br />
         <br />
         <br />
