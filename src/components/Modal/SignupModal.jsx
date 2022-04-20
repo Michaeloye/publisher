@@ -73,7 +73,6 @@ export default function SignupModal({ handleClose }) {
         const name = res.data.newUser.name;
         const userId = res.data.newUser._id;
 
-        console.log(res);
         setLoading(false);
         localStorage.setItem("token", token);
         localStorage.setItem("name", name);
@@ -83,6 +82,7 @@ export default function SignupModal({ handleClose }) {
       .catch((error) => {
         if (error.message === "Request failed with status code 400") {
           console.log(error);
+
           setLoading(false);
           setEmailExist(true);
         } else {
