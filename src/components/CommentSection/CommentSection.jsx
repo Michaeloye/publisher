@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Comment from "../Comment/Comment";
 import axios from "axios";
 import BasicLoader from "../Loader/BasicLoader";
+import { AnimatePresence } from "framer-motion";
 
 function CommentSection() {
   const [posts, setPosts] = useState([]);
@@ -31,18 +32,21 @@ function CommentSection() {
             <BasicLoader />
           </div>
         )}
-        {posts.map((post) => {
-          return (
-            <Comment
-              key={post._id}
-              authorId={post.creator._id}
-              title={post.title}
-              content={post.content}
-              author={post.creator.name}
-              since={post.createAt}
-            />
-          );
-        })}
+        <AnimatePresence initial={false}>
+          {posts.map((post) => {
+            return (
+              <Comment
+                key={post._id}
+                authorId={post.creator._id}
+                postId={post._id}
+                title={post.title}
+                content={post.content}
+                author={post.creator.name}
+                since={post.createAt}
+              />
+            );
+          })}
+        </AnimatePresence>
         <br />
         <br />
         <br />
