@@ -55,7 +55,6 @@ export default function LoginModal({ handleClose }) {
         const name = res.data.user.name;
         const userId = res.data.user._id;
 
-        console.log(res);
         setLoading(false);
         localStorage.setItem("token", token);
         localStorage.setItem("name", name);
