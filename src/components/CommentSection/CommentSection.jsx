@@ -14,9 +14,9 @@ function CommentSection() {
       .get("https://mikepostapp.herokuapp.com/feed/posts")
       .then((res) => {
         setPosts(res.data.posts.reverse());
-        setLoading(false);
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => console.log(err.message))
+      .finally(()=> setLoading(false));
   });
   return (
     <div
