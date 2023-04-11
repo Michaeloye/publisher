@@ -12,7 +12,7 @@ function StartTopic({ onClick }) {
   return (
     <motion.button
       className="bg-primary-blue flex items-center justify-center w-12 h-12 md:w-60 md:px-10 rounded-full md:rounded-lg text-white 
-     fixed bottom-12 right-5 md:static md:bottom-auto md:right-auto hover:bg-opacity-80 z-50"
+     fixed bottom-12 right-5 md:static md:bottom-auto md:right-auto hover:bg-opacity-80 z-10"
       onClick={() => onClick()}
       key="start-topic-button"
       whileHover="whileHover"
